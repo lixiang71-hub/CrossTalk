@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>职能沟通翻译助手 - 消除理解偏差</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="light-theme">
+    <main class="desktop-container">
+
+        <!-- Header Area -->
+        <div class="agent-header-area">
+            <h1 class="hero-title">职能沟通翻译助手</h1>
+            <!-- Agent Selection -->
+            <div class="agent-dock">
+                <div class="agent-item active" id="agent-pm" onclick="selectAgent('pm_to_dev')">
+                    <div class="avatar-wrap">
+                        <img src="assets/avatar_pm_new.png" alt="Product Manager">
+                    </div>
+                    <div class="tooltip">需求转译官 <span>PM ➔ Dev</span></div>
+                </div>
+                <div class="agent-item" id="agent-dev" onclick="selectAgent('dev_to_pm')">
+                    <div class="avatar-wrap">
+                        <img src="assets/avatar_dev_new.png" alt="Developer">
+                    </div>
+                    <div class="tooltip">技术转译官 <span>Dev ➔ PM</span></div>
+                </div>
+                <div class="agent-item add-btn">
+                    <div class="avatar-wrap"><span>+</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message History -->
+        <div id="messageHistory" class="message-history">
+            <!-- Messages will be appended here -->
+        </div>
+
+        <div class="command-center">
+            <div class="input-wrapper">
+                <textarea id="sourceInput" placeholder="@David 进行数据分析..." rows="1"></textarea>
+
+                <button id="translateBtn" class="send-btn" onclick="handleTranslate()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="19" x2="12" y2="5"></line>
+                        <polyline points="5 12 12 5 19 12"></polyline>
+                    </svg>
+                </button>
+
+                <!-- Mention Menu (Hidden) -->
+                <div id="mentionMenu" class="mention-menu hidden">
+                    <div class="menu-item" onclick="applyMention('pm_to_dev')">@需求转译官 (将业务翻译为技术)</div>
+                    <div class="menu-item" onclick="applyMention('dev_to_pm')">@技术转译官 (将技术翻译为业务)</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
